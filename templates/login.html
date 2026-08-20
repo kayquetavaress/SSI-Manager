@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SSI EXTRUSÃO</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/login.css') }}">
+
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+
+        <div class="login-box">
+
+            <div class="logo">
+
+                SSI EXTRUSÃO
+
+            </div>
+
+            <div class="subtitulo">
+
+                Sistema de Gestão de Solicitações de Serviço Interno
+
+            </div>
+
+            <form method="POST">
+
+                <div class="campo">
+
+                    <label>Usuário</label>
+
+                    <input
+                        type="text"
+                        name="usuario"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Senha</label>
+
+                    <div class="senha-container">
+
+                        <input
+                            id="senha"
+                            type="password"
+                            name="senha"
+                            required>
+
+                        <button
+                            type="button"
+                            onclick="togglePassword()">
+
+                            👁
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <button
+                    class="btn-login"
+                    type="submit">
+
+                    Entrar
+
+                </button>
+
+            </form>
+
+            <div class="footer-login">
+
+                SSI Extrusão © 2026
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        function togglePassword() {
+
+            const senha =
+                document.getElementById(
+                    "senha"
+                );
+
+            senha.type =
+                senha.type === "password"
+                ? "text"
+                : "password";
+
+        }
+
+    </script>
+
+</body>
+
+</html>

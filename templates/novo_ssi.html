@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova SSI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/novo_ssi.css') }}">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        SSI EXTRUSÃO
+    </div>
+
+    <nav class="menu">
+
+        <a href="{{ url_for('dashboard') }}">
+            Pagina Inicial
+        </a>
+
+        <a href="{{ url_for('consulta') }}">
+            Consulta SSI
+        </a>
+
+        <a href="{{ url_for('novo_ssi') }}">
+            Nova SSI
+        </a>
+
+        <a href="{{ url_for('usuarios') }}">
+            Usuários
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Sair
+        </a>
+
+    </nav>
+
+</header>
+
+<div class="content">
+
+    <div class="header">
+
+        <h1>Nova SSI</h1>
+
+        <p>
+            Preencha os dados para registrar uma nova SSI.
+        </p>
+
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        <div class="card">
+
+            <h2>Dados da Solicitação</h2>
+
+            <div class="grid">
+
+            
+
+                <div class="campo">
+
+                    <label>Solicitante</label>
+
+                    <input
+                        type="text"
+                        name="solicitante"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Área</label>
+
+                    <input
+                        type="text"
+                        name="area"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Setor Responsável</label>
+
+                    <input
+                        type="text"
+                        name="responsavel"
+                        required>
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Prioridade</label>
+
+                    <select name="prioridade">
+
+                        <option>Baixa</option>
+                        <option>Média</option>
+                        <option>Alta</option>
+                        <option>Crítica</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Problema Identificado</h2>
+
+            <div class="campo">
+
+                <label>Descrição do Problema</label>
+
+                <textarea
+                    name="problema"
+                    placeholder="Descreva detalhadamente o problema encontrado..."
+                    required></textarea>
+
+            </div>
+
+            <div class="campo">
+
+                <label>📷 Evidência da SSI</label>
+
+                <input
+                    type="file"
+                    name="imagem"
+                    accept=".jpg,.jpeg,.png,.webp">
+
+                <small>
+                    Anexe uma foto da ocorrência, equipamento ou tela do erro.
+                </small>
+
+            </div>
+
+        </div>
+
+        <div class="acoes">
+
+            <button
+                type="submit"
+                class="btn-salvar">
+
+                💾 Salvar SSI
+
+            </button>
+
+            <button
+                type="button"
+                onclick="history.back()"
+                class="btn-voltar">
+
+                ← Voltar
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

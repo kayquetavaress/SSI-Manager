@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Usuários</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/usuarios.css') }}">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>👥 Gerenciamento de Usuários</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="alerta">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+
+        <label>Usuário</label>
+
+        <input
+            type="text"
+            name="username"
+            required>
+
+        <label>Senha</label>
+
+        <input
+            type="password"
+            name="senha"
+            required>
+
+        <button type="submit">
+
+            ➕ Criar Usuário
+
+        </button>
+
+    </form>
+
+    <h2>Usuários Cadastrados</h2>
+
+<table>
+
+    <thead>
+
+        <tr>
+
+            <th>Usuário</th>
+
+            <th>Ações</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for usuario in usuarios %}
+
+        <tr>
+
+            <td>
+
+                {{ usuario.username }}
+
+            </td>
+
+            <td>
+
+                {% if usuario.username != "admin" %}
+
+               <a href="{{ url_for('excluir_usuario', user_id=usuario.id) }}"
+                  onclick="return confirm('Deseja excluir este usuário?');">
+
+                🗑 Excluir
+
+</a>
+
+                {% else %}
+
+                <span class="admin-label">
+
+                    Administrador
+
+                </span>
+
+                {% endif %}
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+    <br>
+
+    <a href="{{ url_for('dashboard') }}">
+        ← Voltar
+    </a>
+
+</div>
+
+</body>
+
+</html>

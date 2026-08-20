@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro SSI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+</head>
+
+<body>
+
+    <header class="topbar">
+
+    <div class="logo">
+        SSI EXTRUSÃO
+    </div>
+
+    <nav class="menu">
+
+        <a href="{{ url_for('dashboard') }}">
+            Página Inicial
+        </a>
+
+        <a href="{{ url_for('consulta') }}">
+            Todas as SSI
+        </a>
+
+        <a href="{{ url_for('novo_ssi') }}">
+            Nova SSI
+        </a>
+
+        {% if current_user.username == "admin" %}
+            <a href="{{ url_for('usuarios') }}">
+             Usuários
+</a>
+
+{% endif %}
+
+        <a href="{{ url_for('logout') }}">
+            Sair
+        </a>
+
+    </nav>
+
+</header>
+
+    <div class="content">
+
+        <div class="header">
+
+            <div>
+                <h1>Registro SSI</h1>
+                <p>Bem-vindo ao Sistema de Gestão de SSI</p>
+            </div>
+
+            <a href="{{ url_for('novo_ssi') }}" class="btn btn-primary">
+                + Nova SSI
+            </a>
+
+        </div>
+
+        <div class="cards">
+
+            <div class="card card-total">
+                <h3>Total SSI</h3>
+                <p>{{ total_ssi }}</p>
+            </div>
+
+            <div class="card card-aberto">
+                <h3>SSI Abertas</h3>
+                <p>{{ abertos }}</p>
+            </div>
+
+            <div class="card card-andamento">
+                <h3>Pendentes</h3>
+                <p>{{ pendentes }}</p>
+            </div>
+
+            <div class="card card-concluido">
+                <h3>Concluídas</h3>
+                <p>{{ concluidos }}</p>
+            </div>
+
+        </div>
+
+        <div class="ultimos">
+
+            <h2>Últimas SSI Registradas</h2>
+
+            <div class="tabela-card">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>SSI</th>
+                            <th>Status</th>
+                            <th>Responsável</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for item in ultimos %}
+
+                        <tr>
+
+                            <td>{{ item.numero_ssi }}</td>
+
+                            <td>{{ item.status }}</td>
+
+                            <td>{{ item.responsavel }}</td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

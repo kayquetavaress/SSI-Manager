@@ -1,0 +1,73 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI,Arial,sans-serif;
+}
+
+body{
+    background:#f5f7fa;
+}
+
+.topbar{
+
+    background:#005CAA;
+
+    height:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    box-shadow:0 2px 6px rgba(0,0,0,.15);
+}
+
+.logo{
+
+    color:white;
+
+    font-size:24px;
+
+    font-weight:700;
+}
+
+.menu{
+
+    display:flex;
+
+    gap:30px;
+}
+
+.menu a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    transition:0.3s;
+}
+
+.menu a:hover{
+
+    color:#ffd500;
+}
+
+.usuario{
+
+    color:white;
+
+    font-weight:600;
+}
+
+.conteudo{
+
+    padding:30px;
+}

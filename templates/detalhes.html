@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Detalhes SSI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/detalhes.css') }}">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        SSI EXTRUSÃO
+    </div>
+
+    <nav class="menu">
+
+        <a href="{{ url_for('dashboard') }}">
+            Página Inicial
+        </a>
+
+        <a href="{{ url_for('consulta') }}">
+            Consulta SSI
+        </a>
+
+        <a href="{{ url_for('novo_ssi') }}">
+            Nova SSI
+        </a>
+
+        {% if current_user.username == "admin" %}
+        <a href="{{ url_for('usuarios') }}">
+            Usuários
+        </a>
+        {% endif %}
+
+        <a href="{{ url_for('logout') }}">
+            Sair
+        </a>
+
+    </nav>
+
+</header>
+
+<div class="content">
+
+    <div class="header">
+
+        <div>
+
+            <h1>{{ ssi.numero_ssi }}</h1>
+
+            <p>
+                Detalhes da solicitação
+            </p>
+
+        </div>
+
+        <span class="status">
+            {{ ssi.status }}
+        </span>
+
+    </div>
+
+    <div class="card">
+
+        <h2>📌 Dados Gerais</h2>
+
+        <div class="grid">
+
+            <div>
+                <strong>Solicitante</strong>
+                <p>{{ ssi.solicitante }}</p>
+            </div>
+
+            <div>
+                <strong>Área</strong>
+                <p>{{ ssi.area }}</p>
+            </div>
+
+            <div>
+                <strong>Setor Responsável</strong>
+                <p>{{ ssi.responsavel }}</p>
+            </div>
+
+            <div>
+                <strong>Prioridade</strong>
+                <p>{{ ssi.prioridade }}</p>
+            </div>
+
+            <div>
+                <strong>Status</strong>
+                <p>{{ ssi.status }}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🔍 Problema Identificado</h2>
+
+        <p>{{ ssi.problema }}</p>
+
+    </div>
+
+    {% if ssi.imagem %}
+
+    <div class="card">
+
+        <h2>📷 Evidência Inicial</h2>
+
+         <a href="{{ url_for('static', filename='uploads/' + ssi.imagem) }}"
+           target="_blank">
+
+            <img
+                src="{{ url_for('static', filename='uploads/' + ssi.imagem) }}"
+                alt="Evidência   </a>
+
+    </div>
+
+    {% endif %}
+
+    {% if ssi.evidencia_fechamento %}
+
+    <div class="card">
+
+        <h2>✅ Evidência da Correção</h2>
+
+        <a href="{{ url_for('static', filename='uploads/' + ssi.evidencia_fechamento) }}"
+           target="_blank">
+
+            <img
+                src="{{ url_for('static', filename='uploads/' + ssi.evidencia_fechamento) }}"
+                alt="Evidência da Correção"
+                class="imagem-evidencia">
+
+        </a>
+
+    </div>
+
+    {% endif %}
+
+    {% if ssi.status != "Concluído" %}
+
+    <div class="card">
+
+        <h2>✅ Finalização</h2>
+
+        <p>
+            Anexe uma evidência da correção antes de concluir a SSI.
+        </p>
+
+        <br>
+
+        <form
+            action="{{ url_for('resolver_ssi', ssi_id=ssi.id) }}"
+            method="POST"
+            enctype="multipart/form-data">
+
+            <div class="campo">
+
+                <label>📷 Evidência da Correção</label>
+
+                <input
+                    type="file"
+                    name="evidencia"
+                    accept="image/*"
+                    required>
+
+            </div>
+
+            <br>
+
+            <button
+                type="submit"
+                class="btn-resolver">
+
+                ✅ Concluir SSI
+
+            </button>
+
+        </form>
+
+    </div>
+
+    {% endif %}
+
+    <div class="card">
+
+        <h2>📅 Datas</h2>
+
+        <p>
+            <strong>Abertura:</strong>
+            {{ ssi.data_abertura }}
+        </p>
+
+        {% if ssi.data_encerramento %}
+
+        <p>
+            <strong>Encerramento:</strong>
+            {{ ssi.data_encerramento }}
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="card">
+
+        <h2>🕒 Histórico</h2>
+
+        {% if historicos %}
+
+        <ul>
+
+            {% for item in historicos %}
+
+            <li>
+
+                <strong>
+                    {{ item.data.strftime('%d/%m/%Y %H:%M') }}
+                </strong>
+
+                -
+
+                {{ item.usuario }}
+
+                -
+
+                {{ item.acao }}
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+
+        {% else %}
+
+        <p>
+            Nenhum histórico registrado.
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    <div class="acoes">
+
+        <button
+            type="button"
+            onclick="history.back()"
+            class="btn-voltar">
+
+            ← Voltar
+
+        </button>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

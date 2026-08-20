@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block titulo %}
+        SSI Manager
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/base.css') }}">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        SSI EXTRUSÃO
+    </div>
+
+    <nav class="menu">
+
+        <a href="{{ url_for('dashboard') }}">
+            Dashboard
+        </a>
+
+        <a href="{{ url_for('consulta') }}">
+            Consulta SSI
+        </a>
+
+        <a href="{{ url_for('novo_ssi') }}">
+            Nova SSI
+        </a>
+
+        <a href="{{ url_for('usuarios') }}">
+            Usuários
+        </a>
+
+        <a href="{{ url_for('logout') }}">
+            Sair
+        </a>
+
+    </nav>
+
+    <div class="usuario">
+
+        👤 {{ current_user.username }}
+
+    </div>
+
+</header>
+
+<main class="conteudo">
+
+    {% block content %}
+    {% endblock %}
+
+</main>
+
+</body>
+
+</html>

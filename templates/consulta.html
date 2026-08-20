@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta SSI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/consulta.css') }}">
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        SSI EXTRUSÃO
+    </div>
+
+    <nav class="menu">
+
+        <a href="{{ url_for('dashboard') }}">
+            Pagina Inicial
+        </a>
+
+        <a href="{{ url_for('consulta') }}">
+            Consulta SSI
+        </a>
+
+        <a href="{{ url_for('novo_ssi') }}">
+            Nova SSI
+        </a>
+
+        {% if current_user.username == "admin" %}
+
+            <a href="{{ url_for('usuarios') }}">
+                Usuários
+            </a>
+
+        {% endif %}
+
+        <a href="{{ url_for('logout') }}">
+            Sair
+        </a>
+
+    </nav>
+
+</header>
+
+<div class="content">
+
+    <div class="header-pagina">
+
+        <div>
+
+            <h1>Consulta SSI</h1>
+
+            <p>
+                Gerenciamento de todas as solicitações
+            </p>
+
+        </div>
+
+        <a href="{{ url_for('novo_ssi') }}"
+           class="btn-novo">
+
+            + Nova SSI
+
+        </a>
+
+    </div>
+
+    <div class="filtros">
+
+        <input
+            type="text"
+            placeholder="Pesquisar SSI...">
+
+        <select>
+
+            <option>
+                Todas as SSI
+            </option>
+
+            <option>
+                SSI Abertas
+            </option>
+
+            <option>
+                SSI Concluídas
+            </option>
+
+        </select>
+
+    </div>
+
+    <div class="tabela-card">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>SSI</th>
+                    <th>Área</th>
+                    <th>Status</th>
+                    <th>Setor Responsável</th>
+                    <th>Ações</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for item in registros %}
+
+                <tr>
+
+                    <td>{{ item.numero_ssi }}</td>
+
+                    <td>{{ item.area }}</td>
+
+                    <td>
+
+                        {% if item.status == "Concluído" %}
+
+                        <span class="status-concluido">
+                            {{ item.status }}
+                        </span>
+
+                        {% else %}
+
+                        <span class="status-aberto">
+                            {{ item.status }}
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>{{ item.responsavel }}</td>
+
+                    <td>
+
+                        <a href="{{ url_for('detalhes', ssi_id=item.id) }}"
+                           class="btn-detalhes">
+
+                            Detalhes
+
+                        </a>
+
+                        <a href="{{ url_for('excluir_ssi', ssi_id=item.id) }}"
+                           class="btn-excluir"
+                           onclick="return confirm('Deseja excluir esta SSI?');">
+
+                            Excluir
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

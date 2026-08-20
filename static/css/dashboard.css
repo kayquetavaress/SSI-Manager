@@ -1,0 +1,159 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+.topbar{
+    background:#0056A8;
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 35px;
+}
+
+.logo{
+    color:white;
+    font-size:26px;
+    font-weight:700;
+}
+
+.menu{
+    display:flex;
+    gap:35px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.menu a:hover{
+    color:#FFD500;
+}
+
+.container{
+    padding:30px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.card{
+    background:#ffffff;
+    border:1px solid #a8b7c7;
+    padding:20px;
+    border-radius:2px;
+    box-shadow:0 1px 3px rgba(0,0,0,.10);
+}
+
+.card h3{
+    font-size:14px;
+    color:#4a5d73;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:32px;
+    font-weight:bold;
+    color:#102a43;
+}
+
+.card-total{
+    border-left:5px solid #005CAA;
+}
+
+.card-aberto{
+    border-left:5px solid #f59e0b;
+}
+
+.card-andamento{
+    border-left:5px solid #ff0000;
+}
+
+.card-concluido{
+    border-left:5px solid #16a34a;
+}
+
+.ultimos{
+    margin-top:30px;
+}
+
+.ultimos h2{
+    margin-bottom:15px;
+    color:#102a43;
+    font-size:22px;
+}
+
+.tabela-card{
+    background:#ffffff;
+    border:1px solid #a8b7c7;
+    padding:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#c8d4e0;
+}
+
+th{
+    padding:12px;
+    border:1px solid #a8b7c7;
+    text-align:left;
+    color:#102a43;
+}
+
+td{
+    padding:10px;
+    border:1px solid #d3dce5;
+}
+
+tbody tr:hover{
+    background:#eef4fa;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    font-size:30px;
+    color:#102a43;
+}
+
+.header p{
+    color:#486581;
+}
+
+.btn-novo{
+    background:#005CAA;
+    color:white;
+    text-decoration:none;
+    padding:10px 18px;
+    border-radius:3px;
+    font-size:14px;
+}
+
+.btn-novo:hover{
+    background:#004b89;
+}
