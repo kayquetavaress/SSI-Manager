@@ -487,9 +487,31 @@ if __name__ == "__main__":
 
     por = int(os.environ.get("PORT", 5000))
     
+    if __name__ == "__main__":
+
+     with app.app_context():
+
+        db.create_all()
+
+        admin = Usuario.query.filter_by(
+            username="admin"
+        ).first()
+
+        if not admin:
+
+            admin = Usuario(
+                username="admin",
+                senha=generate_password_hash(
+                    "123456"
+                )
+            )
+
+            db.session.add(admin)
+            db.session.commit()
+
+    port = int(os.environ.get("PORT", 5000))
+
     app.run(
         host="0.0.0.0",
-        port=por,
-        debug=True,
-        use_reloader=False
+        port=port
     )
