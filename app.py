@@ -34,10 +34,7 @@ app.config["SECRET_KEY"] = "ssi_fortlev_2026"
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-app.config["SQLALCHEMY_DATABASE_URI"] = (
-    "sqlite:///" +
-    os.path.join(basedir, "database", "ssi.db")
-)
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///ssi.db"
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -488,12 +485,11 @@ if __name__ == "__main__":
             db.session.add(admin)
             db.session.commit()
 
+    por = int(os.environ.get("PORT", 5000))
+    
     app.run(
-        host="127.0.0.1",
-        port=5000,
+        host="0.0.0.0",
+        port=por,
         debug=True,
         use_reloader=False
     )
-    
-
-    
