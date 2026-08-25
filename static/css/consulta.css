@@ -226,3 +226,38 @@ tr:hover{
 
     border-radius:6px;
 }
+
+@media (max-width: 768px){
+
+    .topbar{
+        flex-direction:column;
+        height:auto;
+        padding:15px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .header-pagina{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .filtros{
+        flex-direction:column;
+    }
+
+    .filtros input,
+    .filtros select{
+        width:100%;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+}

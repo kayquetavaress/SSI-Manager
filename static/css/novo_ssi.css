@@ -208,3 +208,34 @@ input[type="file"]{
 
     background:#4b5563;
 }
+
+@media (max-width: 768px){
+
+    .topbar{
+        flex-direction:column;
+        height:auto;
+        padding:15px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .content{
+        padding:15px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .acoes{
+        flex-direction:column;
+    }
+
+    .btn-salvar,
+    .btn-voltar{
+        width:100%;
+    }
+}

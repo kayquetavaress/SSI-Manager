@@ -97,3 +97,23 @@ th{
 
     font-weight:600;
 }
+
+@media (max-width:768px){
+
+    .topbar{
+        flex-direction:column;
+        height:auto;
+        padding:15px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    table{
+        display:block;
+        overflow-x:auto;
+        white-space:nowrap;
+    }
+}

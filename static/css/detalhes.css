@@ -198,3 +198,37 @@ ul li{
     padding:10px 0;
     border-bottom:1px solid #e5e7eb;
 }
+
+@media (max-width: 768px){
+
+    .topbar{
+        flex-direction:column;
+        height:auto;
+        padding:15px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:15px;
+    }
+
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .imagem-evidencia{
+        width:100%;
+        max-width:100%;
+    }
+
+    .btn-resolver,
+    .btn-voltar{
+        width:100%;
+    }
+}
