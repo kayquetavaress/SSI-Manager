@@ -115,7 +115,7 @@
     </div>
 
 
-   {% if ssi.imagem %}
+ {% if ssi.imagem %}
 
 <div class="card">
 
@@ -135,21 +135,32 @@
 
 {% endif %}
 
-    <div class="card">
+    {% if ssi.status == "Concluído" %}
 
-        <h2>✅ Evidência da Correção</h2>
+    {% if ssi.evidencia_fechamento %}
 
-        <a href="{{ url_for('static', filename='uploads/' + ssi.evidencia_fechamento) }}"
-           target="_blank">
+{% endif %}
 
-            <img
-                src="{{ url_for('static', filename='uploads/' + ssi.evidencia_fechamento) }}"
-                alt="Evidência da Correção"
-                class="imagem-evidencia">
+    {% if ssi.evidencia_fechamento %}
 
-        </a>
+<div class="card">
 
-    </div>
+    <h2>✅ Evidência da Correção</h2>
+
+     <a href="{{ url_for('static', filename='uploads/' + ssi.evidencia_fechamento) }}"
+       target="_blank">
+    </a>
+
+        <img
+            src="{{ url_for('static', filename='uploads/' + ssi.evidencia_fechamento) }}"
+            alt="Evidência da Correção"
+            class="imagem-evidencia">
+
+    </a>
+
+</div>
+
+{% endif %}
 
     {% endif %}
 
