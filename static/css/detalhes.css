@@ -121,12 +121,24 @@ body{
 /* EVIDÊNCIAS */
 
 .imagem-evidencia{
+
     width:100%;
-    max-width:800px;
+
+    max-width:400px;
+
+    max-height:300px;
+
+    object-fit:cover;
 
     border-radius:10px;
 
     border:1px solid #d1d5db;
+
+    display:block;
+
+    margin-top:10px;
+
+    cursor:pointer;
 }
 
 /* CAMPOS */
@@ -231,4 +243,46 @@ ul li{
     .btn-voltar{
         width:100%;
     }
+}
+
+@media (max-width:768px){
+
+    .imagem-evidencia{
+
+        width:100%;
+
+        max-width:320px;
+
+        height:200px;
+    }
+
+}
+
+
+.imagem-evidencia{
+
+    width:350px;
+
+    height:220px;
+
+    object-fit:cover;
+
+    display:block;
+
+    margin:15px auto;
+
+    border-radius:12px;
+
+    border:1px solid #d1d5db;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.10);
+
+    transition:.3s;
+
+    cursor:pointer;
+}
+
+.imagem-evidencia:hover{
+
+    transform:scale(1.03);
 }
