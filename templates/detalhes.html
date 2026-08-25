@@ -116,22 +116,25 @@
 
     {% if ssi.imagem %}
 
-    <div class="card">
+   {% if ssi.imagem %}
 
-        <h2>📷 Evidência Inicial</h2>
+<div class="card">
 
-         <a href="{{ url_for('static', filename='uploads/' + ssi.imagem) }}"
-           target="_blank">
+    <h2>📷 Evidência Inicial</h2>
 
-            <img
-                src="{{ url_for('static', filename='uploads/' + ssi.imagem) }}"
-                alt="Evidência   </a>
+    <a href="{{ url_for('static', filename='uploads/' + ssi.imagem) }}"
+       target="_blank">
 
-    </div>
+        <img
+            src="{{ url_for('static', filename='uploads/' + ssi.imagem) }}"
+            alt="Evidência Inicial"
+            class="imagem-evidencia">
 
-    {% endif %}
+    </a>
 
-    {% if ssi.evidencia_fechamento %}
+</div>
+
+{% endif %}
 
     <div class="card">
 
