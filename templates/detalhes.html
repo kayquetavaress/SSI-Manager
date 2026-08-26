@@ -215,14 +215,14 @@
 
         <p>
             <strong>Abertura:</strong>
-            {{ ssi.data_abertura }}
+            {{ ssi.data_abertura.strftime('%d/%m/%Y %H:%M') }}
         </p>
 
         {% if ssi.data_encerramento %}
 
         <p>
             <strong>Encerramento:</strong>
-            {{ ssi.data_encerramento }}
+            {{ ssi.data_encerramento.strftime('%d/%m/%Y %H:%M') }}
         </p>
 
         {% endif %}
